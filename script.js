@@ -1,15 +1,15 @@
 let input = document.getElementById('inputBox');
 let buttons = document.querySelectorAll('button');
-let sciCalc = document.getElementById('sciCalc');
+let sciButtons = document.querySelector('.sci-buttons');
 let string = "";
-let isRadians = true;
+let isSciVisible = false;
 let memory = 0; // For memory functions
 let arr = Array.from(buttons);
 
-sciCalc.style.display = 'none'; // Hide the scientific calculator by default
+sciButtons.style.display = 'none'; // Hide the scientific buttons by default
 
 arr.forEach(button => {
-    button.addEventListener('click', (e) =>{
+    button.addEventListener('click', (e) => {
         if(e.target.innerHTML == '='){
             try {
                 string = eval(string);
@@ -24,15 +24,16 @@ arr.forEach(button => {
             string = string.substring(0, string.length-1);
             input.value = string;
         } else if(e.target.classList.contains('toggleSci')){
-            sciCalc.style.display = sciCalc.style.display === 'none' ? 'block' : 'none';
+            isSciVisible = !isSciVisible;
+            sciButtons.style.display = isSciVisible ? 'grid' : 'none';
         } else if(e.target.innerHTML == 'sin'){
-            string = Math.sin(isRadians ? eval(string) : eval(string) * (Math.PI / 180)).toString();
+            string = Math.sin(eval(string)).toString();
             input.value = string;
         } else if(e.target.innerHTML == 'cos'){
-            string = Math.cos(isRadians ? eval(string) : eval(string) * (Math.PI / 180)).toString();
+            string = Math.cos(eval(string)).toString();
             input.value = string;
         } else if(e.target.innerHTML == 'tan'){
-            string = Math.tan(isRadians ? eval(string) : eval(string) * (Math.PI / 180)).toString();
+            string = Math.tan(eval(string)).toString();
             input.value = string;
         } else if(e.target.innerHTML == 'sinh'){
             string = Math.sinh(eval(string)).toString();
@@ -90,8 +91,3 @@ arr.forEach(button => {
         }
     })
 })
-
-function factorial(n) {
-    if (n === 0 || n === 1) return 1;
-    return n * factorial(n - 1);
-}
