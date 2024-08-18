@@ -26,6 +26,7 @@ arr.forEach(button => {
         } else if(e.target.classList.contains('toggleSci')){
             isSciVisible = !isSciVisible;
             sciButtons.style.display = isSciVisible ? 'grid' : 'none';
+            document.querySelector('.grid-container').classList.toggle('compact-grid');
         } else if(e.target.innerHTML == 'sin'){
             string = Math.sin(eval(string)).toString();
             input.value = string;
