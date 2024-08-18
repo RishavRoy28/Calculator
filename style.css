@@ -22,6 +22,8 @@ body{
     border-radius: 16px;
     background: transparent;
     box-shadow: 0px 3px 15px rgba(113, 115, 119, 0.5);
+    max-width: 400px;
+    width: 100%;
 }
 
 input{
@@ -45,16 +47,21 @@ input::placeholder{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
+    transition: grid-template-columns 0.3s ease-in-out;
+}
+
+.grid-container.compact-grid {
+    grid-template-columns: repeat(6, 1fr);
 }
 
 button{
     border: none;
-    width: 60px;
-    height: 60px;
+    width: 100%;
+    height: 50px;
     border-radius: 10px;
     background: transparent;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 16px;
     box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1);
     cursor: pointer;
 }
@@ -67,14 +74,9 @@ button{
     color: #6dee0a;
 }
 
-.toggleSci{
-    grid-column: span 2;
-    background-color: #2196f3;
-}
-
 .sci-buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: none; /* Hidden by default */
+    grid-template-columns: repeat(6, 1fr);
     gap: 10px;
     margin-top: 10px;
 }
